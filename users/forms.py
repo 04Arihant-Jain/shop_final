@@ -15,21 +15,16 @@ class ChoiceInput(forms.ChoiceField):
     input_type = 'choice'
 
 class SignUpForm(UserCreationForm):
-    customer = forms.BooleanField(required=True)
     address = forms.CharField(max_length=250)
     city = forms.CharField(max_length=30)
     postcode = forms.CharField(max_length=30, help_text='postcode field')
-    #date_birth = forms.DateField()
-    # preferred_genre = forms.ChoiceField(choices=FAVORITE_GENRE_CHOICES, widget=forms.RadioSelect)
-
     date_birth=forms.DateField(widget=forms.widgets.DateInput(attrs={'type': 'date'}))
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2','customer', 'address',
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'address',
                   'city', 'postcode', )
         widgets = {
             'date_birth': DateInput(),
-            # 'preferred_genre': ChoiceInput()
 
         }
