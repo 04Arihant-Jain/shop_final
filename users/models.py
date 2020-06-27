@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 import datetime
-
+from warehouse.models import Warehouse
 
 class Profile(models.Model):
     FAVORITE_GENRE_CHOICES = (
@@ -17,11 +17,8 @@ class Profile(models.Model):
     city = models.CharField(max_length=30)
     postcode = models.CharField(max_length=30)
     date_birth = models.DateField(default=datetime.date.today, blank=True)
-    # preferred_genre = models.TextField(blank=False)
-    preferred_genre = models.CharField(
-        max_length=30,
-        choices=FAVORITE_GENRE_CHOICES,
-    )
+    shopkeeper = models.BooleanField(default=False)
+    warehouse=models.ForeignKey(Warehouse,on_delete=models.CASCADE,null=True)
 
 
 @receiver(post_save, sender=User)

@@ -8,7 +8,7 @@ class ProfileItemInline(admin.TabularInline):
 
 
 class UserAdmin(admin.ModelAdmin):
-    list_display = ['user', 'address', 'city', 'postcode', 'date_birth', 'preferred_genre']
+    list_display = ['user', 'address', 'city', 'postcode', 'date_birth','shopkeeper']
 
 
 admin.site.register(Profile, UserAdmin)
