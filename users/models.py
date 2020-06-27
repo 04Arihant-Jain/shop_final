@@ -7,11 +7,7 @@ import datetime
 from warehouse.models import Warehouse
 
 class Profile(models.Model):
-    FAVORITE_GENRE_CHOICES = (
-        ('comedy', 'Comedy'),
-        ('horror', 'Horror'),
-        ('all', 'All'),
-    )
+   
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     address = models.CharField(max_length=250)
     city = models.CharField(max_length=30)
